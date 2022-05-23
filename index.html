@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="./js/main.js" defer></script>
+    <title>Bröllopsfotografen</title>
+</head>
+<body>
+    <main>
+        <section class="view view-camera active" data-camera-view>
+            <header>
+                <div class="gallery-icon">
+                    <span data-toggle-view-button class="toggle-gallery-btn">
+                        <img src="./icons/gridIcon.png" alt="grid">
+                    </span>
+                </div>
+            </header>
+            <div class="camera-container">
+                <video id="camera" autoplay data-camera></video>
+                <canvas id="picture" data-picture></canvas>
+            </div>
+            <button data-picture-button>föreviga ett ögonblick</button>
+        </section>
+        <section class="view view-gallery" data-gallery-view>
+            <header>
+                <div class="camera-icon">
+                    <span data-toggle-view-button class="toggle-view-btn"><span></span></span>
+                </div>
+            </header>
+            <div class="gallery-active" data-gallery-active></div>
+            <div class="gallery-container" data-gallery-container> 
+            </div>
+        </section>
+    </main>
+</body>
+</html>

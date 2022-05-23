@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #666;
+    --secondary: #ddd;
+    --bg-color: #333;
+
+    --app-width: 425px;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    max-width: var(--app-width);
+    margin: auto;
+    background: #111; 
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+}
+
+section {
+    background: var(--bg-color);
+    height: 100%;
+    padding: 1rem;
+}
+
+section header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* ----- Icons ----- */
+.toggle-gallery-btn {
+    filter: invert(.9);
+}
+
+.toggle-gallery-btn:hover {
+    filter: invert(1);
+}
+
+.toggle-gallery-btn img {
+    height: 3rem;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.toggle-view-btn {
+    border-radius: 50%;
+    position: absolute;
+    padding: 1rem;
+    background: #333;
+    cursor: pointer;
+    right: 1rem;
+    border: 4px solid black;
+    outline: 3px solid white;
+}
+
+.toggle-view-btn span {
+    position: absolute;
+    background: #444;
+    padding: .8rem;
+    border-radius: 50%;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    border: 3px solid #333;
+}
+
+/* ----- View ----- */
+.view {
+    width: var(--app-width);
+    position: fixed;
+    transform: translateX(0%);
+    transition: all 250ms ease-out;
+}
+
+.view-camera {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: .1;
+}
+
+.view-camera.active{
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+.view-gallery {
+    transform: scaleX(0);
+    opacity: .1;
+    transform-origin: right;
+}
+
+.view-gallery.active{
+    transform: scaleX(1);
+    opacity: 1;
+}
+
+/* ----- Camera ----- */
+
+.view-camera {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.camera-container {
+    background: var(--bg-color);
+    height: 100%;
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.camera {
+    background: var(--primary);
+    min-height: 300px;
+    width: 100%;
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    text-transform: uppercase;
+}
+
+.view-camera button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+#camera {
+    max-width: calc(var(--app-width) - 2rem);
+}
+
+#picture {
+    display: none;
+    width: calc(var(--app-width) - 2rem);
+    aspect-ratio: 1.33;
+}
+
+/* ----- Gallery ----- */
+
+.view-gallery {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.gallery-active img {
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .1);
+    width: 80%;
+    aspect-ratio: 1.33;
+}
+
+.gallery-container {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.gallery-container div {
+    position: relative;
+}
+
+.gallery-container div > img {
+    width: calc(var(--app-width) / 2 - 2rem);
+    background: green;
+    aspect-ratio: 1.33;
+    cursor: pointer;
+    box-shadow: 0 0 4px 4px rgba(0, 0, 0, .1);
+
+}
+
+.gallery-container div > span {
+    background: #ddd;
+    height: 1.4rem;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    position: absolute;
+    cursor: pointer;
+    top: .2rem;
+    right: .2rem;
+    display: grid;
+    place-content: center;
+    transform: rotateZ(45deg);
+}
+
+/* ----- Scrollbar ----- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #555;
+}
+  
+::-webkit-scrollbar-thumb {
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .1);
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
