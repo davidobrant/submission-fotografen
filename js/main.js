@@ -40,11 +40,15 @@ const takePicture = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(images))
     renderImages()
     
-    new Notification(
+    const notification = new Notification(
         `ADDED`, { 
             body: `Image-${images[images.length-1].id} was added to gallery.`,
             icon: imageData 
     });
+    notification.addEventListener('click', () => {
+        cameraView.classList.remove('active');
+        galleryView.classList.add('active');
+    })
 }
 
 const resetPictureButton = () => {
@@ -86,18 +90,10 @@ const renderImages = () => {
 }
 
 const deletePicture = (id) => {
-    const image = images.find(image => image.id === id)
-    new Notification(
-        `DELETED`, { 
-            body: `Image${image.id} was deleted from list.`,
-            icon: image.image 
-    });
-
     const newImages = images.filter(image => image.id !== id)
     images = newImages;
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(newImages))
     renderImages()
-    galleryActive.innerHTML = '';
 }
 
 const renderActive = (id) => {
@@ -125,17 +121,3 @@ const registerServiceWorker = () => {
 registerServiceWorker()
 
 /* ----- Offline ----- */
-
-
-
-/* ----- Notifications ----- */
-
-const createNotification = () => {
-    const text = 'Detta är en notifikation';
-
-    const notification = new Notification('Notis', { body: text });
-
-    notification.addEventListener('click', () => {
-        window.open('https://localhost:443')
-    })
-}

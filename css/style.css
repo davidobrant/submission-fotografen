@@ -11,7 +11,7 @@
     --secondary: #ddd;
     --bg-color: #333;
 
-    --app-width: 425px;
+    --app-width: 768px;
 }
 
 body {
@@ -124,7 +124,7 @@ button {
 .camera-container {
     background: var(--bg-color);
     height: 100%;
-    max-width: fit-content;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -133,7 +133,6 @@ button {
 
 .camera {
     background: var(--primary);
-    min-height: 300px;
     width: 100%;
     border-radius: 4px;
     display: grid;
@@ -148,6 +147,7 @@ button {
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;
+    margin-top: 1rem;
 }
 
 #camera {
@@ -157,6 +157,8 @@ button {
 #picture {
     display: none;
     width: calc(var(--app-width) - 2rem);
+    max-width: 640px;
+    max-height: 480px;
     aspect-ratio: 1.33;
 }
 
@@ -178,7 +180,7 @@ button {
 .gallery-container {
     margin-top: 4rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
 }
 
@@ -187,8 +189,7 @@ button {
 }
 
 .gallery-container div > img {
-    width: calc(var(--app-width) / 2 - 2rem);
-    background: green;
+    max-width: calc(var(--app-width) / 4 - 2rem);
     aspect-ratio: 1.33;
     cursor: pointer;
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, .1);
@@ -225,4 +226,51 @@ button {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #999;
+}
+
+/* ----- MQ ----- */
+@media screen and (max-width: 600px) {
+    .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-container div > img {
+        max-width: calc(var(--app-width) / 3 - 2rem);
+    }
+}
+@media screen and (max-width: 425px) {
+    :root {
+        --app-width: 425px;
+        
+    }
+    .gallery-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .gallery-container div > img {
+        max-width: calc(var(--app-width) / 3 - 2rem);
+    }
+}
+@media screen and (max-width: 375px) {
+    :root {
+        --app-width: 375px;
+        
+    }
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery-container div > img {
+        max-width: calc(var(--app-width) / 2 - 2rem);
+    }
+}
+@media screen and (max-width: 320px) {
+    :root {
+        --app-width: 320px;
+
+    }
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery-container div > img {
+        max-width: calc(var(--app-width) / 2 - 2rem);
+        padding: .2rem;
+    }
 }
