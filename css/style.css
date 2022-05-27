@@ -172,8 +172,9 @@ button {
 }
 
 .gallery-active img {
+    margin-top: 4rem;
     box-shadow: 0 0 4px 4px rgba(0, 0, 0, .1);
-    width: 80%;
+    width: 100%;
     aspect-ratio: 1.33;
 }
 
@@ -252,7 +253,6 @@ button {
 @media screen and (max-width: 375px) {
     :root {
         --app-width: 375px;
-        
     }
     .gallery-container {
         grid-template-columns: repeat(2, 1fr);
@@ -261,6 +261,7 @@ button {
         max-width: calc(var(--app-width) / 2 - 2rem);
     }
 }
+
 @media screen and (max-width: 320px) {
     :root {
         --app-width: 320px;
