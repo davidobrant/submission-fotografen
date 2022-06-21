@@ -145,7 +145,7 @@ const getImages = async () => {
 }
 
 const saveImages = async () => {
-    if(images.length === 0) {
+    if (images.length === 0) {
         const response = await fetch(API_URL, {
             method: 'PUT',
             body: JSON.stringify({ images: []}),
